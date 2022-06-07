@@ -1,13 +1,16 @@
 import React from "react"
-import unescape from "unescape-js"
 
 export default function Card(props) {
     
     function fixText(str) {
-        str = str.replaceAll("&#039;" , "'")
-        str = str.replaceAll("&ndash;" , "_")
-        str = str.replaceAll("&quot;", "'")
-        return str
+        // str = str.replaceAll("&#039;" , "'")
+        // str = str.replaceAll("&ndash;" , "_")
+        // str = str.replaceAll("&quot;", "'")
+        // str = str.replaceAll("&iacute;", "í")
+        // str = str.replaceAll("&amp;", "&")
+        var s = str
+        var he = require('he')
+        return he.decode(s)
     }
     
     function buttonStyling(option) {
@@ -56,7 +59,6 @@ export default function Card(props) {
             </button>
         )
     })
-    // !props.isChecked && 
     
     return (
         <div className="question-card">
